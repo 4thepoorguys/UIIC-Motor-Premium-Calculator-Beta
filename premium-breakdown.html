@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Premium Breakdown</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================================================= -->
+    <!-- PAGE TITLE -->
+    <!-- ================================================= -->
+
+    <div class="company-badge">
+        PREMIUM BREAKDOWN
+    </div>
+
+    <h1 class="main-title">
+        Premium <span>Summary</span>
+    </h1>
+
+
+    <!-- ================================================= -->
+    <!-- VEHICLE DETAILS -->
+    <!-- ================================================= -->
+
+    <div class="input-card">
+
+        <div class="section-title">
+            Vehicle Details
+        </div>
+
+        <div class="breakdown-row">
+            <span>IDV</span>
+            <strong id="bdIdv">₹0.00</strong>
+        </div>
+
+        <div class="breakdown-row">
+            <span>Cubic Capacity</span>
+            <strong id="bdCc">0 CC</strong>
+        </div>
+
+        <div class="breakdown-row">
+            <span>Zone</span>
+            <strong id="bdZone">-</strong>
+        </div>
+
+        <div class="breakdown-row">
+            <span>OD Rate</span>
+            <strong id="bdOdRate">0%</strong>
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- PREMIUM GRID -->
+    <!-- ================================================= -->
+
+    <div class="calculator-grid">
+
+
+        <!-- ================================================= -->
+        <!-- OD SECTION -->
+        <!-- ================================================= -->
+
+        <div class="input-card premium-card">
+
+            <div class="section-title">
+                Own Damage Premium
+            </div>
+
+            <div id="odBreakdown"></div>
+
+            <div class="premium-total-row">
+                <span>Total OD Premium</span>
+                <strong id="totalOd">₹0.00</strong>
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- LIABILITY SECTION -->
+        <!-- ================================================= -->
+
+        <div class="input-card premium-card">
+
+            <div class="section-title">
+                Liability Premium
+            </div>
+
+            <div id="liabilityBreakdown"></div>
+
+            <div class="premium-total-row">
+                <span>Total Liability Premium</span>
+                <strong id="totalLiability">₹0.00</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- FINAL SUMMARY -->
+    <!-- ================================================= -->
+
+    <div class="input-card final-summary-card">
+
+        <div class="summary-row">
+            <span>Net Premium (OD + Liability)</span>
+            <strong id="netPremium">₹0.00</strong>
+        </div>
+
+        <div class="summary-row">
+            <span>CGST @ 9%</span>
+            <strong id="cgstAmount">₹0.00</strong>
+        </div>
+
+        <div class="summary-row">
+            <span>SGST @ 9%</span>
+            <strong id="sgstAmount">₹0.00</strong>
+        </div>
+
+        <div class="summary-row grand-total">
+            <span>Gross Premium Payable</span>
+            <strong id="grossPremium">₹0.00</strong>
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- BACK LINK -->
+    <!-- ================================================= -->
+
+    <div class="share-btn-wrapper">
+
+        <button
+            class="back-btn"
+            onclick="goBack()">
+            EDIT CALCULATION
+        </button>
+
+        <button
+            class="calc-btn share-btn"
+            onclick="generateQuotePdf()">
+            SHARE QUOTE
+        </button>
+
+
+    </div>
+
+        <a href="bundled-calc.html"
+       class="back-link">
+
+        ← Clear and calculate New Premium
+
+    </a>
+
+</div>
+
+
+
+
+<!-- ===================================================== -->
+<!-- BREAKDOWN JS -->
+<!-- ===================================================== -->
+
+<script src="premium-breakdown.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+</body>
+</html>

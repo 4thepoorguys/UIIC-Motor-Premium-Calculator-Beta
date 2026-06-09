@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Car Policy Types</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="company-badge">🚗 PRIVATE CAR SELECTION</div>
+
+    <h1 class="main-title">Select <span>Policy Type</span></h1>
+
+    <div class="section-title">
+        <span></span> Choose your coverage <span></span>
+    </div>
+
+    <div class="card-grid">
+        <!-- Bundled Policy Card -->
+        <div class="card" onclick="window.location.href='bundled-calc.html'">
+            <div class="icon">📦</div>
+            <h2>Bundled Policy</h2>
+            <p>1 Year Own Damage + 3 Years Third Party. Mandatory for Brand new cars.</p>
+            <button>›</button>
+        </div>
+
+        <!-- Package Policy Card -->
+        <div class="card" onclick="alert('Package Policy coming soon')">
+            <div class="icon">🛡️</div>
+            <h2>Package Policy</h2>
+            <p>Standard 1 Year OD + 1 Year TP comprehensive coverage for existing vehicles.</p>
+            <button>›</button>
+        </div>
+
+        <!-- Standalone OD Card -->
+        <div class="card" onclick="alert('Standalone OD coming soon')">
+            <div class="icon">💎</div>
+            <h2>Standalone OD Policy</h2>
+            <p>Only Own Damage cover for vehicles with existing TP Policy.</p>
+            <button>›</button>
+        </div>
+
+        <!-- Liability Only Card -->
+        <div class="card" onclick="alert('Liability Only coming soon')">
+            <div class="icon">⚖️</div>
+            <h2>Liability Only Policy</h2>
+            <p>Mandatory Third Party cover as per the Motor Vehicle Act.</p>
+            <button>›</button>
+        </div>
+    </div>
+
+    <a href="motor-selection.html" class="back-link" style="display:block; text-align:center; margin-top:40px; color:#00f0d0; text-decoration:none;">← Back to Vehicle Selection</a>
+</div>
+
+</body>
+</html>
