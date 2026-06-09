@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function showComingSoon() {
 
     alert(
-        "⚡ Electric & Hybrid Vehicle Calculator\n\nComing Soon!"
+        "Coming Soon!\n\nThis module is currently under development."
     );
 
 }
