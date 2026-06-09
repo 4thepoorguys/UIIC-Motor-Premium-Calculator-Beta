@@ -58,3 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         badge.innerText = `${category.toUpperCase()} VEHICLES SELECTION`;
     }
 });
+
+function showComingSoon() {
+
+    alert(
+        "⚡ Electric & Hybrid Vehicle Calculator\n\nComing Soon!"
+    );
+
+}
