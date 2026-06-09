@@ -660,7 +660,7 @@ async function generateQuotePdf() {
     );
 
     doc.text(
-        'Applicable taxes, policy terms and conditions will apply.',
+        'Applicable policy terms and conditions will apply.',
         14,
         footerY + 4
     );
