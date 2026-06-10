@@ -188,6 +188,15 @@ async function generateQuotePdf() {
         'a4'
     );
 
+    const logo = new Image();
+
+    logo.src = 'uiic-logo.png';     // adjust path if needed
+
+    await new Promise(resolve => {
+
+        logo.onload = resolve;
+    });
+
     const today =
         new Date().toLocaleDateString('en-IN');
 
@@ -223,6 +232,15 @@ async function generateQuotePdf() {
     // HEADER
     // =====================================================
 
+    doc.addImage(
+        logo,
+        'PNG',
+        10,
+        6,
+        18,
+        18
+    );
+    
     doc.setFontSize(16);
     doc.setFont(
         'helvetica',
