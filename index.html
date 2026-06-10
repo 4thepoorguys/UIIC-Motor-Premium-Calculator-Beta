@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Premium Calculator - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="company-badge">🏢 UNITED INDIA INSURANCE CO. LTD.</div>
+
+    <h1 class="main-title">Motor <span>Premium Calculator</span></h1>
+
+    <div class="disclaimer">
+        <span class="warning">⚠</span>
+
+        <p>
+            <b>Disclaimer:</b>
+            This is an unofficial, independent tool built for reference purposes only.
+            It is not an official application of United India Insurance Company Limited (UIIC).
+            Premium calculations are based on published rate charts and may vary post-underwriting.
+            For accurate quotes, please contact UIIC or an authorised agent.
+        </p>
+    </div>
+
+
+    <div class="section-title">
+        <span></span> Select Engine Type <span></span>
+    </div>
+
+    <div class="card-grid">
+    <!-- Motor Vehicles Card -->
+    <div class="card" onclick="goToVehicleSelection('Motor')">
+        <div class="icon">⛽</div>
+        <h2>Motor Vehicles</h2>
+        <p>Internal Combustion Engines (Petrol/Diesel/CNG)</p>
+        <button>›</button>
+    </div>
+
+    <!-- Electric Vehicles Card -->
+    <div class="card" onclick="showComingSoon()">
+        <div class="icon">⚡</div>
+        <h2>Electric Vehicles</h2>
+        <p>Battery Electric Vehicles (BEV) and Pure Electric</p>
+        <button>›</button>
+    </div>
+
+    <!-- Hybrid Vehicles Card -->
+    <div class="card" onclick="showComingSoon()">
+        <div class="icon">🔋</div>
+        <h2>Hybrid Vehicles</h2>
+        <p>Strong Hybrid and Plug-in Hybrid (PHEV) models</p>
+        <button>›</button>
+    </div>
+</div>
+
+    <div class="footer">🔒 Secure • Reliable • Trusted</div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function showComingSoon() {
+
+    alert(
+        "⚡ Coming Soon!\n\nElectric & Hybrid Vehicle calculators are under development."
+    );
+
+}
+</script>
+
+</body>
+</html>
