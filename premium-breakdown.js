@@ -190,7 +190,7 @@ async function generateQuotePdf() {
 
     const logo = new Image();
 
-    logo.src = 'uiic-logo.png';     // adjust path if needed
+    logo.src = 'uiic-logo.png';     
 
     await new Promise(resolve => {
 
@@ -235,9 +235,9 @@ async function generateQuotePdf() {
     doc.addImage(
         logo,
         'PNG',
-        15,
+        30,
         6,
-        22,
+        25,
         18
     );
     
