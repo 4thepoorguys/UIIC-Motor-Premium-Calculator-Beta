@@ -235,7 +235,7 @@ async function generateQuotePdf() {
     doc.addImage(
         logo,
         'PNG',
-        20,
+        10,
         6,
         22,
         18
