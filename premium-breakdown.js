@@ -237,7 +237,7 @@ async function generateQuotePdf() {
         'PNG',
         30,
         6,
-        25,
+        30,
         18
     );
     
