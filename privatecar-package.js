@@ -646,7 +646,7 @@ window.addEventListener(
 // MAIN CALCULATION
 // =========================================================
 
-function calculateBundledPolicy() {
+function calculatePrivateCarPolicy() {
 
     // =====================================================
     // BASIC INPUTS
