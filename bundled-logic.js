@@ -1464,7 +1464,8 @@ function calculateBundledPolicy() {
     // =====================================================
     // SAVE
     // =====================================================
-
+    
+    localStorage.removeItem('vehicleAge');
     localStorage.setItem(
         'premiumBreakdown',
 
