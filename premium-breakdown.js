@@ -62,6 +62,29 @@ document.getElementById('bdZone').innerText =
 document.getElementById('bdOdRate').innerText =
     `${((data.odRate || 0) * 100).toFixed(3)}%`;
 
+const vehicleAge =
+    localStorage.getItem('vehicleAge');
+
+const vehicleAgeEl =
+    document.getElementById('vehicleAge');
+
+const vehicleAgeRowEl =
+    document.getElementById('vehicleAgeRow');
+
+if (
+    vehicleAgeEl &&
+    vehicleAgeRowEl &&
+    vehicleAge !== null &&
+    vehicleAge !== ''
+) {
+
+    vehicleAgeEl.innerText =
+        Number(vehicleAge).toFixed(1) +
+        ' Yrs';
+
+    vehicleAgeRowEl.style.display =
+        'flex';
+}
 
 // =====================================================
 // OD SECTION
