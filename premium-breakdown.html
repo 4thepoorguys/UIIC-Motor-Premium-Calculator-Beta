@@ -10,7 +10,7 @@
 
     <title>Premium Breakdown</title>
 
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.2">
 
 </head>
 
@@ -42,6 +42,11 @@
         </div>
 
         <div class="breakdown-row">
+            <span>Zone</span>
+            <strong id="bdZone">-</strong>
+        </div>
+
+        <div class="breakdown-row">
             <span>IDV</span>
             <strong id="bdIdv">₹0.00</strong>
         </div>
@@ -50,10 +55,16 @@
             <span>Cubic Capacity</span>
             <strong id="bdCc">0 CC</strong>
         </div>
+        
+        <div
+            class="breakdown-row"
+            id="vehicleAgeRow"
+            style="display:none;">
 
-        <div class="breakdown-row">
-            <span>Zone</span>
-            <strong id="bdZone">-</strong>
+            <span>Vehicle Age</span>
+
+            <strong id="vehicleAge"></strong>
+
         </div>
 
         <div class="breakdown-row">
@@ -218,7 +229,7 @@
 <!-- BREAKDOWN JS -->
 <!-- ===================================================== -->
 
-<script src="premium-breakdown.js?v=1.1"></script>
+<script src="premium-breakdown.js?v=1.2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 
