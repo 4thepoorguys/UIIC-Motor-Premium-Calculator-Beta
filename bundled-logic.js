@@ -968,19 +968,27 @@ function calculateBundledPolicy() {
     // =====================================================
     // NCB PROTECT
     // =====================================================
-
-    if (isChecked('ncbProtect') && ncb <= 0) {
-
-        warnings.push(
-            "• NCB Protect Cover can be selected only when NCB is above 0%."
-        );
     
-
-        ncbProtectPremium = round2(
-            baseIdv * 0.00135
-        );
-
-        addonPremium += ncbProtectPremium;
+    if (isChecked('ncbProtect')) {
+    
+        if (ncb <= 0) {
+    
+            warnings.push(
+                "• NCB Protect Cover can be selected only when NCB is above 0%."
+            );
+    
+            $('ncbProtect').checked = false;
+        }
+    
+        else {
+    
+            ncbProtectPremium = round2(
+                baseIdv * 0.00135
+            );
+    
+            addonPremium +=
+                ncbProtectPremium;
+        }
     }
 
 
