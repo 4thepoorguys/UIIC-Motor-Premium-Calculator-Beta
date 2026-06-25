@@ -704,3 +704,53 @@ input:disabled{
         grid-template-columns:1fr;
     }
 }
+
+.flatpickr-calendar{
+
+    background:#121212 !important;
+
+    border:1px solid rgba(255,255,255,0.15) !important;
+
+    color:#fff !important;
+}
+
+.flatpickr-months{
+
+    background:#121212 !important;
+}
+
+.flatpickr-current-month input.cur-year{
+
+    color:#fff !important;
+}
+
+.flatpickr-monthDropdown-months{
+
+    color:#fff !important;
+
+    background:#121212 !important;
+}
+
+.flatpickr-weekday{
+
+    color:#00f0d0 !important;
+}
+
+.flatpickr-day{
+
+    color:#fff !important;
+}
+
+.flatpickr-day.selected{
+
+    background:#00f0d0 !important;
+
+    border-color:#00f0d0 !important;
+
+    color:#000 !important;
+}
+
+.flatpickr-day:hover{
+
+    background:#2a2a2a !important;
+}
