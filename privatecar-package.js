@@ -751,29 +751,53 @@ function calculatePrivateCarPolicy() {
     const elecDiscount = getValue('elecDisc');
     const ncb = getValue('ncb');
 
-    if (
-        !validate(
-            zone,
-            "Select Zone",
-            'zone'
-        )
-    ) return;
+   // =====================================================
+    // BASIC INPUT VALIDATION
+    // =====================================================
     
-    if (
-        !validate(
-            cc > 0,
-            "Select Cubic Capacity",
-            'cc'
-        )
-    ) return;
-
-    if (
-        !validate(
-            baseIdv > 0,
-            "Enter valid IDV",
-            'idv'
-        )
-    ) return;
+    const validationErrors = [];
+    
+    if (!zone) {
+    
+        validationErrors.push(
+            "• Select Zone"
+        );
+    }
+    
+    if (cc <= 0) {
+    
+        validationErrors.push(
+            "• Select Cubic Capacity"
+        );
+    }
+    
+    if (baseIdv <= 0) {
+    
+        validationErrors.push(
+            "• Enter valid IDV"
+        );
+    }
+    
+    if (!document.getElementById('invoiceDate').value) {
+    
+        validationErrors.push(
+            "• Select Invoice Date"
+        );
+    }
+    
+    if (!document.getElementById('renewalDate').value) {
+    
+        validationErrors.push(
+            "• Select Renewal Date"
+        );
+    }
+    
+    if (validationErrors.length > 0) {
+    
+        showWarningModal(validationErrors, "Please Fill the Following");
+    
+        return;
+    }
 
 
     // =====================================================
