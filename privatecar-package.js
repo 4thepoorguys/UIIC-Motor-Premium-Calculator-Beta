@@ -1021,44 +1021,64 @@ function calculatePrivateCarPolicy() {
     }
     
     // =====================================================
-    // TYRE & RIM
+    // TYRE & RIM PROTECT COVER
     // =====================================================
-
+    
     if (isChecked('toggleTyreRim')) {
-
-        const si =
-            getValue('tyreRimSI');
-
-        if (
-            !validate(
-                si > 0,
-                "Select Tyre & Rim SI",
-                'tyreRimSI'
-            )
-        ) return;
-
-        switch (si) {
-
-            case 25000:
-                tyreRimPremium = 1000;
-                break;
-
-            case 50000:
-                tyreRimPremium = 2000;
-                break;
-
-            case 100000:
-                tyreRimPremium = 4000;
-                break;
-
-            case 200000:
-                tyreRimPremium = 8000;
-                break;
+    
+        const vehicleAge =
+            getVehicleAgeYears();
+    
+        if (vehicleAge > 4.5) {
+    
+            warnings.push(
+                "• Tyre & Rim Protect Cover is not applicable for vehicles aged above 4.5 years."
+            );
+    
+            $('toggleTyreRim').checked = false;
+    
+            $('toggleTyreRim')
+                .dispatchEvent(
+                    new Event('change')
+                );
         }
-
-        addonPremium += tyreRimPremium;
-    }   
-
+    
+        else {
+    
+            const si =
+                getValue('tyreRimSI');
+    
+            if (
+                !validate(
+                    si > 0,
+                    "Select Tyre & Rim SI",
+                    'tyreRimSI'
+                )
+            ) return;
+    
+            switch (si) {
+    
+                case 25000:
+                    tyreRimPremium = 1000;
+                    break;
+    
+                case 50000:
+                    tyreRimPremium = 2000;
+                    break;
+    
+                case 100000:
+                    tyreRimPremium = 4000;
+                    break;
+    
+                case 200000:
+                    tyreRimPremium = 8000;
+                    break;
+            }
+    
+            addonPremium +=
+                tyreRimPremium;
+        }
+    }
     // =====================================================
     // EMI
     // =====================================================
