@@ -977,16 +977,47 @@ function calculatePrivateCarPolicy() {
     // =====================================================
     // LOSS OF KEY
     // =====================================================
-
+    
     if (isChecked('toggleLossOfKey')) {
-
-        const si =
-            getValue('lossOfKeySI');
-
-        lossOfKeyPremium =
-            si === 10000 ? 150 : 250;
-
-        addonPremium += lossOfKeyPremium;
+    
+        const vehicleAge =
+            getVehicleAgeYears();
+    
+        if (vehicleAge > 4.5) {
+    
+            warnings.push(
+                "• Loss of Key Cover is not applicable for vehicles aged above 4.5 years."
+            );
+    
+            $('toggleLossOfKey').checked = false;
+    
+            $('toggleLossOfKey')
+                .dispatchEvent(
+                    new Event('change')
+                );
+        }
+    
+        else {
+    
+            const si =
+                getValue('lossOfKeySI');
+    
+            if (
+                !validate(
+                    si > 0,
+                    "Select Loss of Key Sum Insured",
+                    'lossOfKeySI'
+                )
+            ) return;
+    
+            lossOfKeyPremium =
+                si === 10000
+                    ? 150
+                    : 250;
+    
+            addonPremium +=
+                lossOfKeyPremium;
+        }
     }
     
     // =====================================================
