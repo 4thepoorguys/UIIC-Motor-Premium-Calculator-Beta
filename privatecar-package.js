@@ -97,7 +97,7 @@ const invoicePicker = flatpickr("#invoiceDate", {
 
     clickOpens: true,
 
-    disableMobile: true,
+    disableMobile: true
     
 });
 
@@ -107,9 +107,9 @@ const renewalPicker = flatpickr("#renewalDate", {
 
     allowInput: true,
 
-    clickOpens: true
+    clickOpens: true,
 
-    disableMobile: true,
+    disableMobile: true
 });
 
 // =====================================================
