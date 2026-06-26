@@ -786,14 +786,14 @@ function calculatePrivateCarPolicy() {
     if (!document.getElementById('invoiceDate').value) {
     
         validationErrors.push(
-            "• Select Invoice Date"
+            "• Enter Invoice Date"
         );
     }
     
     if (!document.getElementById('renewalDate').value) {
     
         validationErrors.push(
-            "• Select Renewal Date"
+            "• Enter Renewal Date"
         );
     }
     
