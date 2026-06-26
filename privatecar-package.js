@@ -7,6 +7,8 @@
 // HELPERS
 // =========================================================
 
+let openBreakdownAfterModal = false;
+
 const $ = (id) => document.getElementById(id);
 
 const getValue = (id) =>
@@ -65,8 +67,11 @@ function closeWarningModal() {
         .getElementById("warningModal")
         .style.display = "none";
 
+    if (openBreakdownAfterModal) {
+
     window.location.href =
         "premium-breakdown.html";
+    }
 }
 
 // =========================================================
@@ -793,6 +798,8 @@ function calculatePrivateCarPolicy() {
     }
     
     if (validationErrors.length > 0) {
+
+        openBreakdownAfterModal = false;
     
         showWarningModal(validationErrors, "Please Fill the Following");
     
@@ -2157,6 +2164,8 @@ function calculatePrivateCarPolicy() {
     );
     
     if (warnings.length > 0) {
+
+        openBreakdownAfterModal = true;
     
         showWarningModal(warnings, "Premium Calculation Warnings");
     
