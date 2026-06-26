@@ -23,6 +23,51 @@ const isUiicRenewal =
         'chkUiicRenewal'
     ).checked;
 
+// =====================================================
+// WARNING MODAL
+// =====================================================
+
+function showWarningModal(warnings){
+
+    const list =
+        document.getElementById(
+            "warningList"
+        );
+
+    list.innerHTML = "";
+
+    warnings.forEach(msg=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "warning-item";
+
+        div.innerHTML =
+            msg;
+
+        list.appendChild(div);
+
+    });
+
+    document
+        .getElementById(
+            "warningModal"
+        )
+        .style.display =
+        "flex";
+}
+
+function closeWarningModal(){
+
+    document
+        .getElementById(
+            "warningModal"
+        )
+        .style.display =
+        "none";
+}
 
 // =========================================================
 // ROUNDING
@@ -2071,13 +2116,12 @@ function calculatePrivateCarPolicy() {
         })
     );
 
-    if (warnings.length > 0) {
-
-        alert(
-            "Please correct the following:\n\n" +
-            warnings.join('\n')
+    if(warnings.length>0){
+    
+        showWarningModal(
+            warnings
         );
-    }   
+    }  
 
     // =====================================================
     // OPEN BREAKDOWN
