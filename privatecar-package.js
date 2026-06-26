@@ -89,70 +89,61 @@ function round2(value) {
 // DATE PICKERS
 // =====================================================
 
-const invoicePicker = flatpickr("#invoiceDate", {
+const renewalPicker = new easepick.create({
 
-    dateFormat: "d/m/Y",
+    element:
+        document.getElementById(
+            "renewalDate"
+        ),
 
-    allowInput: true,
+    css: [
+        "https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css"
+    ],
 
-    clickOpens: true,
+    format:
+        "DD/MM/YYYY",
 
-    disableMobile: true
-    
+    autoApply:
+        true
 });
 
-const renewalPicker = flatpickr("#renewalDate", {
 
-    dateFormat: "d/m/Y",
+const invoicePicker = new easepick.create({
 
-    allowInput: true,
+    element:
+        document.getElementById(
+            "invoiceDate"
+        ),
 
-    clickOpens: true,
+    css: [
+        "https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css"
+    ],
 
-    disableMobile: true
+    format:
+        "DD/MM/YYYY",
+
+    autoApply:
+        true,
+
+    setup(picker){
+
+        picker.on(
+
+            "select",
+
+            (e)=>{
+
+                renewalPicker.setStartDate(
+                    e.detail.date
+                );
+
+            }
+
+        );
+
+    }
+
 });
-
-// =====================================================
-// AUTO FORMAT DD/MM/YYYY
-// =====================================================
-
-function formatDateInput(input, picker) {
-
-    input.addEventListener('input', function () {
-
-        let value =
-            this.value.replace(/\D/g, '');
-
-        if (value.length > 2) {
-
-            value =
-                value.slice(0, 2)
-                + '/'
-                + value.slice(2);
-        }
-
-        if (value.length > 5) {
-
-            value =
-                value.slice(0, 5)
-                + '/'
-                + value.slice(5, 9);
-        }
-
-        this.value = value;
-
-        // Update Flatpickr when full date entered
-
-        if (value.length === 10) {
-
-            picker.setDate(
-                value,
-                false,
-                "d/m/Y"
-            );
-        }
-    });
-}
 
 formatDateInput(
     document.getElementById('invoiceDate'),
@@ -163,7 +154,6 @@ formatDateInput(
     document.getElementById('renewalDate'),
     renewalPicker
 );
-
 
 // =====================================================
 // DATE PARSER
