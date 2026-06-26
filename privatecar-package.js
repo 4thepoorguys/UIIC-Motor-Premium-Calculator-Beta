@@ -2158,7 +2158,7 @@ function calculatePrivateCarPolicy() {
     
     if (warnings.length > 0) {
     
-        showWarningModal(warnings);
+        showWarningModal(warnings, "Premium Calculation Warnings");
     
     } else {
     
