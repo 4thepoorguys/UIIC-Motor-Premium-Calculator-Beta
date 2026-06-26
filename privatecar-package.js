@@ -753,6 +753,22 @@ function calculatePrivateCarPolicy() {
 
     if (
         !validate(
+            zone,
+            "Select Zone",
+            'zone'
+        )
+    ) return;
+    
+    if (
+        !validate(
+            cc > 0,
+            "Select Cubic Capacity",
+            'cc'
+        )
+    ) return;
+
+    if (
+        !validate(
             baseIdv > 0,
             "Enter valid IDV",
             'idv'
