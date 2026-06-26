@@ -255,6 +255,27 @@ async function generateQuotePdf() {
     // HEADER
     // =====================================================
 
+    function getPolicyTitle(type) {
+
+        switch (type) {
+    
+            case "bundled":
+                return "PRIVATE CAR BUNDLED POLICY QUOTATION";
+    
+            case "package":
+                return "PRIVATE CAR PACKAGE POLICY QUOTATION";
+    
+            case "saod":
+                return "PRIVATE CAR STAND-ALONE OWN DAMAGE POLICY QUOTATION";
+    
+            case "liability":
+                return "PRIVATE CAR LIABILITY ONLY POLICY QUOTATION";
+    
+            default:
+                return "PRIVATE CAR POLICY QUOTATION";
+        }
+    }
+
     doc.addImage(
         logo,
         'PNG',
@@ -271,7 +292,7 @@ async function generateQuotePdf() {
     );
 
     doc.text(
-        'PRIVATE CAR BUNDLED POLICY QUOTATION',
+        getPolicyTitle(data.policyType),
         105,
         15,
         { align: 'center' }
@@ -388,15 +409,37 @@ async function generateQuotePdf() {
             ]
         ],
 
-        body: [
-
-            ['IDV', money(data.idv)],
+        const vehicleBody = [
             ['Zone', data.zone],
-            ['Engine Capacity', getCcBand(data.cc)],
-            ['OD Rate', odRateText]
-            
+            ['IDV', money(data.idv)],           
+            ['Engine Capacity', getCcBand(data.cc)]
+        
+        ];
+        
+        if (
+            data.policyType === "package" ||
+            data.policyType === "saod" ||
+            data.policyType ==="liability"
+        ) {
+        
+            vehicleBody.push([
+        
+                'Vehicle Age',
+        
+                `${Number(data.vehicleAge).toFixed(3)} Years`
+        
+            ]);
+        }
+        
+        vehicleBody.push([
+        
+            'OD Rate',
+        
+            odRateText
+        
+        ]);
 
-        ],
+        body: vehicleBody,
 
         styles: {
             fontSize: 9,
