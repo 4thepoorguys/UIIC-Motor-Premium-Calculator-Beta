@@ -1469,6 +1469,8 @@ function calculateBundledPolicy() {
     localStorage.setItem(
         'premiumBreakdown',
 
+        policyType: "bundled",
+
         JSON.stringify({
 
             idv: baseIdv,
