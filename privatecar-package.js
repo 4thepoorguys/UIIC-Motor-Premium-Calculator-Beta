@@ -2124,12 +2124,5 @@ function calculatePrivateCarPolicy() {
     
         window.location.href =
             "premium-breakdown.html";
-    }
-    
-    // =====================================================
-    // OPEN BREAKDOWN
-    // =====================================================
-
-    window.location.href =
-        "premium-breakdown.html";
+    }    
 }
