@@ -59,14 +59,14 @@ function showWarningModal(warnings){
         "flex";
 }
 
-function closeWarningModal(){
+function closeWarningModal() {
 
     document
-        .getElementById(
-            "warningModal"
-        )
-        .style.display =
-        "none";
+        .getElementById("warningModal")
+        .style.display = "none";
+
+    window.location.href =
+        "premium-breakdown.html";
 }
 
 // =========================================================
@@ -2115,14 +2115,17 @@ function calculatePrivateCarPolicy() {
             grossPremium
         })
     );
-
-    if(warnings.length>0){
     
-        showWarningModal(
-            warnings
-        );
-    }  
-
+    if (warnings.length > 0) {
+    
+        showWarningModal(warnings);
+    
+    } else {
+    
+        window.location.href =
+            "premium-breakdown.html";
+    }
+    
     // =====================================================
     // OPEN BREAKDOWN
     // =====================================================
