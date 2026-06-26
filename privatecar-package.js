@@ -2145,6 +2145,8 @@ function calculatePrivateCarPolicy() {
 
         JSON.stringify({
 
+            policyType: "package",
+
             idv: baseIdv,
             zone,
             cc,
