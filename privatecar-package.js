@@ -2140,27 +2140,26 @@ function calculatePrivateCarPolicy() {
     // SAVE
     // =====================================================
 
-    localStorage.setItem(
+   localStorage.setItem(
+
         'premiumBreakdown',
-
+    
         JSON.stringify({
-
+    
             policyType: "package",
-
+    
             idv: baseIdv,
             zone,
             cc,
+            vehicleAge,
             odRate,
-
+    
             odItems,
             liabilityItems,
-
-            totalOd:
-                grossOD,
-
-            totalLiability:
-                grossTP,
-
+    
+            totalOd: grossOD,
+            totalLiability: grossTP,
+    
             netPremium,
             cgst,
             sgst,
