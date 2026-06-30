@@ -408,7 +408,7 @@ async function generateQuotePdf() {
             
                     'Vehicle Age',
             
-                    `${Number(data.vehicleAge).toFixed(3)} Years`
+                    `${Number(data.vehicleAge).toFixed(1)} Years`
             
                 ]);
             }
