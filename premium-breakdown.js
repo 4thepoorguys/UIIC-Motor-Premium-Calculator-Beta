@@ -391,6 +391,36 @@ async function generateQuotePdf() {
     const vehicleStartY =
         doc.lastAutoTable.finalY + 6;
 
+            const vehicleBody = [
+                ['Zone', data.zone],
+                ['IDV', money(data.idv)],           
+                ['Engine Capacity', getCcBand(data.cc)]
+            
+            ];
+            
+            if (
+                data.policyType === "package" ||
+                data.policyType === "saod" ||
+                data.policyType ==="liability"
+            ) {
+            
+                vehicleBody.push([
+            
+                    'Vehicle Age',
+            
+                    `${Number(data.vehicleAge).toFixed(3)} Years`
+            
+                ]);
+            }
+            
+            vehicleBody.push([
+            
+                'OD Rate',
+            
+                odRateText
+            
+            ]);
+
     doc.autoTable({
 
         startY: vehicleStartY,
@@ -408,36 +438,6 @@ async function generateQuotePdf() {
                 }
             ]
         ],
-
-        const vehicleBody = [
-            ['Zone', data.zone],
-            ['IDV', money(data.idv)],           
-            ['Engine Capacity', getCcBand(data.cc)]
-        
-        ];
-        
-        if (
-            data.policyType === "package" ||
-            data.policyType === "saod" ||
-            data.policyType ==="liability"
-        ) {
-        
-            vehicleBody.push([
-        
-                'Vehicle Age',
-        
-                `${Number(data.vehicleAge).toFixed(3)} Years`
-        
-            ]);
-        }
-        
-        vehicleBody.push([
-        
-            'OD Rate',
-        
-            odRateText
-        
-        ]);
 
         body: vehicleBody,
 
