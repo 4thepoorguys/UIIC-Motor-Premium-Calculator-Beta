@@ -1884,68 +1884,6 @@ function calculatePrivateCarPolicy() {
 
 
     // =====================================================
-    // LIABILITY BREAKDOWN
-    // =====================================================
-
-    const liabilityItems = [
-
-        {
-            label:
-                "Basic TP Premium",
-            amount:
-                basicTpPremium
-        },
-
-        {
-            label:
-                "CPA Cover",
-            amount:
-                cpaPremium
-        },
-
-        {
-            label:
-                "LL Paid Driver",
-            amount:
-                paidDriverPremium
-        },
-
-        {
-            label:
-                "NFPP Cover",
-            amount:
-                nfppPremium
-        },
-
-        {
-            label:
-                "Platinum PA Cover",
-            amount:
-                platinumPaPremium
-        },
-
-        {
-            label:
-                "Unnamed PA Cover",
-            amount:
-                unnamedPaPremium
-        },
-
-        {
-            label:
-                "Geographical Extension - TP",
-            amount:
-                geoExtLiabilityPremium
-        },
-
-        {
-            label: "Built-in CNG / LPG TP Loading",
-            amount: cngLiabilityPremium
-        }   
-    ];
-
-
-    // =====================================================
     // SAVE
     // =====================================================
  
