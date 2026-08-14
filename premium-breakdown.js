@@ -3,6 +3,27 @@ const data = JSON.parse(
 );
 
 // =====================================================
+// HIDE LIABILITY SECTION FOR SAOD
+// =====================================================
+
+if (
+    data &&
+    data.policyType === "saod"
+) {
+
+    const liabilitySection =
+        document.getElementById(
+            "liabilitySection"
+        );
+
+    if (liabilitySection) {
+
+        liabilitySection.style.display =
+            "none";
+    }
+}
+
+// =====================================================
 // NO DATA SAFETY
 // =====================================================
 
