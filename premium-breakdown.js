@@ -137,10 +137,21 @@ if (odContainer && Array.isArray(data.odItems)) {
 // LIABILITY SECTION
 // =====================================================
 
+const liabilitySection =
+    document.getElementById('liabilitySection');
+
 const liabilityContainer =
     document.getElementById('liabilityBreakdown');
 
 if (
+    data.policyType === 'saod'
+) {
+
+    if (liabilitySection) {
+        liabilitySection.style.display = 'none';
+    }
+
+} else if (
     liabilityContainer &&
     Array.isArray(data.liabilityItems)
 ) {
@@ -160,7 +171,6 @@ if (
         }
     });
 }
-
 
 // =====================================================
 // TOTALS
