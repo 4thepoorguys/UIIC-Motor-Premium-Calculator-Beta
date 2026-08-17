@@ -3,6 +3,21 @@ const data = JSON.parse(
 );
 
 // =====================================================
+// NET PREMIUM LABEL
+// =====================================================
+
+const netPremiumLabel =
+    document.getElementById('netPremiumLabel');
+
+if (netPremiumLabel) {
+
+    netPremiumLabel.textContent =
+        data.policyType === 'saod'
+            ? 'Net Premium'
+            : 'Net Premium (OD + Liability)';
+}
+
+// =====================================================
 // HIDE LIABILITY SECTION FOR SAOD
 // =====================================================
 
