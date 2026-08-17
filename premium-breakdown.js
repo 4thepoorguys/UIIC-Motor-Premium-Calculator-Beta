@@ -3,21 +3,6 @@ const data = JSON.parse(
 );
 
 // =====================================================
-// NET PREMIUM LABEL
-// =====================================================
-
-const netPremiumLabel =
-    document.getElementById('netPremiumLabel');
-
-if (netPremiumLabel) {
-
-    netPremiumLabel.textContent =
-        data.policyType === 'saod'
-            ? 'Net Premium'
-            : 'Net Premium (OD + Liability)';
-}
-
-// =====================================================
 // HIDE LIABILITY SECTION FOR SAOD
 // =====================================================
 
@@ -918,3 +903,40 @@ document.getElementById('agentMobile')
             this.value.slice(0, 10);
     }
 });
+
+// =====================================================
+// POLICY TYPE - NET PREMIUM LABEL
+// =====================================================
+
+function updateNetPremiumLabel() {
+
+    const savedData =
+        localStorage.getItem('premiumBreakdown');
+
+    if (!savedData) return;
+
+    const data =
+        JSON.parse(savedData);
+
+    const label =
+        document.getElementById('netPremiumLabel');
+
+    if (!label) return;
+
+    label.textContent =
+        data.policyType === 'saod'
+            ? 'Net Premium'
+            : 'Net Premium (OD + Liability)';
+}
+
+if (document.readyState === 'loading') {
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        updateNetPremiumLabel
+    );
+
+} else {
+
+    updateNetPremiumLabel();
+}
