@@ -823,7 +823,7 @@ if (data.policyType === 'saod') {
             [
                 data.policyType === 'saod'
                     ? 'Net Premium'
-                    : 'Net Premium (A+B)',,
+                    : 'Net Premium (A+B)',
                 `${Number(data.netPremium).toFixed(2)}`
             ],
 
