@@ -692,7 +692,7 @@ if (data.policyType !== 'saod') {
             left: 108
         },
 
-        tableWidth: 91,
+        tableWidth: 89,
 
         theme: 'grid',
 
