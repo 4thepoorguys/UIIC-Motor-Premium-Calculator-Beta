@@ -617,11 +617,15 @@ async function generateQuotePdf() {
     const odFinalY = doc.lastAutoTable.finalY;
 
             
-    // =====================================================
-    // TP TABLE
-    // =====================================================
+// =====================================================
+// LIABILITY TABLE 
+// =====================================================
 
-    const tpTable = doc.autoTable({
+let tpFinalY = tableStartY;
+
+if (data.policyType !== 'saod') {
+
+    doc.autoTable({
 
         startY: tableStartY,
 
@@ -653,10 +657,9 @@ async function generateQuotePdf() {
             textColor: [15,15,15],
             lineWidth: 0.2,
             lineColor: [100,100,100]
-        },        
+        },
 
         headStyles: {
-
             fillColor: [0, 70, 140],
             textColor: 255,
             halign: 'center',
@@ -676,68 +679,119 @@ async function generateQuotePdf() {
         }
     });
 
-    const tpFinalY = doc.lastAutoTable.finalY;
+    tpFinalY = doc.lastAutoTable.finalY;
+}
 
-    const netPremiumY =
+// =====================================================
+// NET PREMIUM
+// =====================================================
+
+const netPremiumY =
     Math.max(
         odFinalY,
         tpFinalY
     ) + 2;
 
-    doc.autoTable({startY: netPremiumY,
+if (data.policyType === 'saod') {
 
-            margin: { left: 14 },
+    doc.autoTable({
 
-            tableWidth: 183,
+        startY: netPremiumY,
 
-            theme: 'grid',
+        margin: {
+            left: 14
+        },
 
-            body: [[
-                'NET OD PREMIUM (A)',
-                'NET TP PREMIUM (B)'
-            ]],
+        tableWidth: 183,
 
-            styles: {
-                fontSize: 10,
-                fontStyle: 'bold',
-                textColor: [15,15,15],
-                lineWidth: 0.2,
-                lineColor: [100,100,100]
+        theme: 'grid',
+
+        body: [[
+            'NET PREMIUM',
+            Number(data.netPremium).toFixed(2)
+        ]],
+
+        styles: {
+            fontSize: 10,
+            fontStyle: 'bold',
+            textColor: [15,15,15],
+            lineWidth: 0.2,
+            lineColor: [100,100,100]
+        },
+
+        columnStyles: {
+
+            0: {
+                cellWidth: 148
             },
 
-            didDrawCell: function(dataCell) {
+            1: {
+                cellWidth: 35,
+                halign: 'right'
+            }
+        }
+    });
 
-                if (dataCell.row.index === 0) {
+} else {
 
-                    const y =
-                        dataCell.cell.y +
-                        dataCell.cell.height / 2 + 1;
+    doc.autoTable({
 
-                    if (dataCell.column.index === 0) {
+        startY: netPremiumY,
 
-                        doc.text(
-                            Number(data.totalOd).toFixed(2),
-                            dataCell.cell.x +
-                            dataCell.cell.width - 3,
-                            y,
-                            { align: 'right' }
-                        );
-                    }
+        margin: {
+            left: 14
+        },
 
-                    if (dataCell.column.index === 1) {
+        tableWidth: 183,
 
-                        doc.text(
-                            Number(data.totalLiability).toFixed(2),
-                            dataCell.cell.x +
-                            dataCell.cell.width - 3,
-                            y,
-                            { align: 'right' }
-                        );
-                    }
+        theme: 'grid',
+
+        body: [[
+            'NET OD PREMIUM (A)',
+            'NET TP PREMIUM (B)'
+        ]],
+
+        styles: {
+            fontSize: 10,
+            fontStyle: 'bold',
+            textColor: [15,15,15],
+            lineWidth: 0.2,
+            lineColor: [100,100,100]
+        },
+
+        didDrawCell: function(dataCell) {
+
+            if (dataCell.row.index === 0) {
+
+                const y =
+                    dataCell.cell.y +
+                    dataCell.cell.height / 2 + 1;
+
+                if (dataCell.column.index === 0) {
+
+                    doc.text(
+                        Number(data.totalOd).toFixed(2),
+                        dataCell.cell.x +
+                        dataCell.cell.width - 3,
+                        y,
+                        { align: 'right' }
+                    );
+                }
+
+                if (dataCell.column.index === 1) {
+
+                    doc.text(
+                        Number(data.totalLiability).toFixed(2),
+                        dataCell.cell.x +
+                        dataCell.cell.width - 3,
+                        y,
+                        { align: 'right' }
+                    );
                 }
             }
-        });
-
+        }
+    });
+}
     
     // =====================================================
     // SUMMARY
@@ -767,7 +821,9 @@ async function generateQuotePdf() {
         body: [
 
             [
-                'Net Premium (A+B)',
+                data.policyType === 'saod'
+                    ? 'Net Premium'
+                    : 'Net Premium (A+B)',,
                 `${Number(data.netPremium).toFixed(2)}`
             ],
 
