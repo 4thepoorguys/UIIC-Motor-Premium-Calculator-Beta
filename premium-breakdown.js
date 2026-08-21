@@ -555,7 +555,7 @@ async function generateQuotePdf() {
     const tableStartY =
         doc.lastAutoTable.finalY + 6;
 
-    // =====================================================
+// =====================================================
 // OD TABLE
 // =====================================================
 
@@ -625,7 +625,7 @@ if (data.policyType === 'saod') {
             left: 14
         },
 
-        tableWidth: 93,
+        tableWidth: 94,
 
         theme: 'grid',
 
@@ -689,7 +689,7 @@ if (data.policyType !== 'saod') {
         startY: tableStartY,
 
         margin: {
-            left: 106
+            left: 108
         },
 
         tableWidth: 91,
