@@ -556,10 +556,10 @@ async function generateQuotePdf() {
         doc.lastAutoTable.finalY + 6;
 
     // =====================================================
-    // OD TABLE
-    // =====================================================
+// OD TABLE
+// =====================================================
 
-   if (data.policyType === 'saod') {
+if (data.policyType === 'saod') {
 
     doc.autoTable({
 
@@ -617,6 +617,8 @@ async function generateQuotePdf() {
 
 } else {
 
+    doc.autoTable({
+
         startY: tableStartY,
 
         margin: {
@@ -648,9 +650,8 @@ async function generateQuotePdf() {
             lineWidth: 0.2,
             lineColor: [100,100,100]
         },
-        
-        headStyles: {
 
+        headStyles: {
             fillColor: [0, 70, 140],
             textColor: 255,
             halign: 'center',
@@ -669,8 +670,10 @@ async function generateQuotePdf() {
             }
         }
     });
+}
 
-    const odFinalY = doc.lastAutoTable.finalY;
+const odFinalY =
+    doc.lastAutoTable.finalY;
 
             
 // =====================================================
