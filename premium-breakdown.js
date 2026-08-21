@@ -559,7 +559,9 @@ async function generateQuotePdf() {
     // OD TABLE
     // =====================================================
 
-    const odTable = doc.autoTable({
+    if (data.policyType === 'saod') {
+
+    doc.autoTable({
 
         startY: tableStartY,
 
@@ -567,7 +569,61 @@ async function generateQuotePdf() {
             left: 14
         },
 
-        tableWidth: 92,
+        tableWidth: 183,
+
+        theme: 'grid',
+
+        head: [
+            [
+                {
+                    content: 'OWN DAMAGE PREMIUM (A)',
+                    colSpan: 2,
+                    styles: {
+                        halign: 'center'
+                    }
+                }
+            ]
+        ],
+
+        body: odRows,
+
+        styles: {
+            fontSize: 8.5,
+            fontStyle: 'bold',
+            textColor: [15,15,15],
+            lineWidth: 0.2,
+            lineColor: [100,100,100]
+        },
+
+        headStyles: {
+            fillColor: [0, 70, 140],
+            textColor: 255,
+            halign: 'center',
+            fontStyle: 'bold'
+        },
+
+        columnStyles: {
+
+            0: {
+                cellWidth: 148
+            },
+
+            1: {
+                cellWidth: 35,
+                halign: 'right'
+            }
+        }
+    });
+
+} else {
+
+        startY: tableStartY,
+
+        margin: {
+            left: 14
+        },
+
+        tableWidth: 93,
 
         theme: 'grid',
 
