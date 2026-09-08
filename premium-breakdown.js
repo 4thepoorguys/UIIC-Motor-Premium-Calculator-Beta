@@ -331,7 +331,12 @@ async function generateQuotePdf() {
         18
     );
     
-    doc.setFontSize(16);
+   if (data.policyType === 'saod') {
+        doc.setFontSize(11);
+    } else {
+        doc.setFontSize(16);
+    }
+
     doc.setFont(
         'helvetica',
         'bold'
