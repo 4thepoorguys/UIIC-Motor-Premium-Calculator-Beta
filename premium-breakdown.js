@@ -334,7 +334,7 @@ async function generateQuotePdf() {
    if (data.policyType === 'saod') {
         doc.setFontSize(11);
     } else {
-        doc.setFontSize(16);
+        doc.setFontSize(14);
     }
 
     doc.setFont(
