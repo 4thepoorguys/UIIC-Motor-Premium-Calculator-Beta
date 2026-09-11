@@ -1,1 +1,476 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Private Car / Liability Only Policy Calculator</title>
+
+    <!-- Flatpickr CSS & Theme -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <div class="company-badge">
+        🚗 PRIVATE CAR / LIABILITY ONLY
+    </div>
+
+    <h1 class="main-title">
+        Premium <span>Calculator</span>
+    </h1>
+
+
+    <!-- ================================================= -->
+    <!-- VEHICLE DETAILS -->
+    <!-- ================================================= -->
+
+    <div class="section-title">
+        Vehicle Details
+    </div>
+
+    <div class="form-row-3col">
+
+        <!-- Cubic Capacity -->
+        <div class="input-group">
+
+            <label>Cubic Capacity</label>
+
+            <select id="cc">
+
+                <option
+                    value=""
+                    selected
+                    disabled
+                    hidden>
+                    -- Select Cubic Capacity --
+                </option>
+
+                <option value="1000">
+                    Up to 1000 CC
+                </option>
+
+                <option value="1500">
+                    1000 - 1500 CC
+                </option>
+
+                <option value="1501">
+                    Above 1500 CC
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- LIABILITY & PA SECTION -->
+    <!-- ================================================= -->
+
+    <div
+        class="section-title"
+        style="margin-top: 25px;">
+
+        Liability & PA Section
+
+    </div>
+
+
+    <div class="toggle-grid-2col">
+
+
+        <!-- ================================================= -->
+        <!-- 1. CPA OWNER DRIVER -->
+        <!-- ================================================= -->
+
+        <div class="grid-cell">
+
+            <div class="toggle-item">
+
+                <label>
+                    CPA Owner-Driver Cover
+                </label>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="toggleCpa">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- 2. PAID DRIVER -->
+        <!-- ================================================= -->
+
+        <div class="grid-cell">
+
+            <div class="toggle-item">
+
+                <label>
+                    Legal Liability to Paid Driver (LLPD)
+                </label>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="togglePaidDriver">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- 3. PLATINUM PA -->
+        <!-- ================================================= -->
+
+        <div class="grid-cell">
+
+            <div class="toggle-item">
+
+                <label>
+                    Platinum PA Cover
+                </label>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="togglePlatinumPa">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="platinumPaFields"
+                class="nested-fields"
+                style="display: none;">
+
+                <div class="form-row">
+
+
+                    <!-- Seating Capacity -->
+                    <div class="input-group">
+
+                        <label>
+                            Seating Capacity
+                        </label>
+
+                        <input
+                            type="number"
+                            id="platSeating"
+                            placeholder="e.g. 5"
+                            min="1">
+
+                    </div>
+
+
+                    <!-- Sum Insured -->
+                    <div class="input-group">
+
+                        <label>
+                            Sum Insured (₹)
+                        </label>
+
+                        <select id="platSi">
+
+                            <option
+                                value=""
+                                selected
+                                disabled
+                                hidden>
+                                -- Select SI --
+                            </option>
+
+                            <option value="500000">
+                                Rs. 5,00,000
+                            </option>
+
+                            <option value="1000000">
+                                Rs. 10,00,000
+                            </option>
+
+                            <option value="1500000">
+                                Rs. 15,00,000
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- 4. NFPP -->
+        <!-- ================================================= -->
+
+        <div class="grid-cell">
+
+            <div class="toggle-item">
+
+                <label>
+                    Legal Liability to NFPP
+                </label>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="toggleNfpp">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="nfppFields"
+                class="nested-fields"
+                style="display: none;">
+
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label>
+                            Number of NFPP
+                        </label>
+
+                        <input
+                            type="number"
+                            id="nfppCount"
+                            placeholder="Enter quantity"
+                            min="1">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- 5. UNNAMED PA -->
+        <!-- ================================================= -->
+
+        <div class="grid-cell">
+
+            <div class="toggle-item">
+
+                <label>
+                    Unnamed PA Cover
+                </label>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="toggleUnnamedPa">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div
+                id="unnamedPaFields"
+                class="nested-fields"
+                style="display: none;">
+
+                <div class="form-row">
+
+
+                    <!-- Number of Persons -->
+                    <div class="input-group">
+
+                        <label>
+                            Number of Persons
+                        </label>
+
+                        <input
+                            type="number"
+                            id="unnamedPersons"
+                            placeholder="e.g. 4"
+                            min="1">
+
+                    </div>
+
+
+                    <!-- Sum Insured -->
+                    <div class="input-group">
+
+                        <label>
+                            Sum Insured
+                            (Multiples of 10000 up to 2L)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="unnamedSi"
+                            placeholder="e.g. 50000"
+                            min="10000"
+                            max="200000"
+                            step="10000">
+
+                        <small
+                            id="unnamedSiError"
+                            style="
+                                color: #ff4a4a;
+                                display: none;
+                                font-size: 11px;
+                                margin-top: 4px;
+                            ">
+
+                            Must be a multiple of 10,000
+                            (Max 2,00,000)
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- CALCULATE BUTTON -->
+    <!-- ================================================= -->
+
+    <button
+        class="calc-btn"
+        onclick="calculatePrivateCarLiability()">
+
+        CALCULATE PREMIUM
+
+    </button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- BACK LINK -->
+<!-- ================================================= -->
+
+<a
+    href="privatecar-menu.html"
+    class="back-link"
+    style="
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        color: #00f0d0;
+        text-decoration: none;
+    ">
+
+    ← Back to Policy Types
+
+</a>
+
+
+<!-- ================================================= -->
+<!-- FLATPICKR -->
+<!-- ================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
+
+
+<!-- ================================================= -->
+<!-- LIABILITY ONLY JS -->
+<!-- ================================================= -->
+
+<script src="privatecar-liability.js"></script>
+
+
+<!-- ================================================= -->
+<!-- WARNING MODAL -->
+<!-- ================================================= -->
+
+<div
+    id="warningModal"
+    class="warning-modal">
+
+    <div class="warning-box">
+
+
+        <div class="warning-header">
+
+            ⚠ Premium Calculation Warnings
+
+        </div>
+
+
+        <div
+            id="warningList"
+            class="warning-list">
+        </div>
+
+
+        <button
+            class="warning-btn"
+            onclick="closeWarningModal()">
+
+            OK
+
+        </button>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
+```
 
