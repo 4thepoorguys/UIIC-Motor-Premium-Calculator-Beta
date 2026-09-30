@@ -4,6 +4,47 @@
 
 
 // =====================================================
+// HELPER FUNCTIONS
+// =====================================================
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function getValue(id) {
+
+    const el = $(id);
+
+    if (!el) return 0;
+
+    return Number(el.value) || 0;
+}
+
+function getInt(id) {
+
+    return parseInt(
+        getValue(id),
+        10
+    ) || 0;
+}
+
+function isChecked(id) {
+
+    const el = $(id);
+
+    return el
+        ? el.checked
+        : false;
+}
+
+function round2(value) {
+
+    return Math.round(
+        (Number(value) + Number.EPSILON) * 100
+    ) / 100;
+}
+
+// =====================================================
 // HELPER
 // =====================================================
 
