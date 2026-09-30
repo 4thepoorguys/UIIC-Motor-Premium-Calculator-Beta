@@ -855,3 +855,40 @@ input:disabled{
 
     transform:scale(1.05);
 }
+
+/* =====================================================
+   LIABILITY ONLY - CUBIC CAPACITY
+   ===================================================== */
+
+.liability-cc-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.liability-cc-wrapper .input-group {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* =====================================================
+   LIABILITY ONLY - TOGGLE GRID
+   ===================================================== */
+
+.toggle-grid-2col {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =====================================================
+   LIABILITY ONLY - CALCULATE BUTTON
+   ===================================================== */
+
+.calc-btn {
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    margin: 30px auto 0;
+}
