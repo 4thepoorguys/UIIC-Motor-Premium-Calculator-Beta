@@ -3,6 +3,59 @@ const data = JSON.parse(
 );
 
 // =====================================================
+// LIABILITY ONLY - HIDE OD INFORMATION
+// =====================================================
+
+if (data.policyType === 'liability') {
+
+    // Hide Zone
+    const bdZoneRow =
+        document.getElementById('bdZoneRow');
+
+    if (bdZoneRow) {
+        bdZoneRow.style.display = 'none';
+    }
+
+
+    // Hide IDV
+    const bdIdvRow =
+        document.getElementById('bdIdvRow');
+
+    if (bdIdvRow) {
+        bdIdvRow.style.display = 'none';
+    }
+
+
+    // Hide OD Rate
+    const bdOdRateRow =
+        document.getElementById('bdOdRateRow');
+
+    if (bdOdRateRow) {
+        bdOdRateRow.style.display = 'none';
+    }
+
+
+    // Hide Own Damage Premium box
+    const odSection =
+        document.getElementById('odSection');
+
+    if (odSection) {
+        odSection.style.display = 'none';
+    }
+
+
+    // Change Net Premium label
+    const netPremiumLabel =
+        document.getElementById('netPremiumLabel');
+
+    if (netPremiumLabel) {
+        netPremiumLabel.textContent =
+            'Net Premium';
+    }
+
+}
+
+// =====================================================
 // SAOD NET PREMIUM LABEL
 // =====================================================
 
