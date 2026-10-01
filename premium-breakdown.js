@@ -495,49 +495,66 @@ async function generateQuotePdf() {
         { align: 'center' }
     );
 
-    // =====================================================
+   // =====================================================
     // VEHICLE DETAILS
     // =====================================================
-
+    
     const vehicleStartY =
         doc.lastAutoTable.finalY + 6;
-
-            const vehicleBody = [
-                ['Zone', data.zone],
-                ['IDV', money(data.idv)],           
-                ['Engine Capacity', getCcBand(data.cc)]
-            
-            ];
-            
-            if (
-                data.policyType === "package" ||
-                data.policyType === "saod" ||
-                data.policyType ==="liability"
-            ) {
-            
-                vehicleBody.push([
-            
-                    'Vehicle Age',
-            
-                    `${Number(data.vehicleAge).toFixed(1)} Years`
-            
-                ]);
-            }
-            
+    
+    let vehicleBody = [];
+    
+    // =====================================================
+    // LIABILITY ONLY
+    // =====================================================
+    
+    if (data.policyType === "liability") {
+    
+        // Liability Only requires only Cubic Capacity
+    
+        vehicleBody = [
+            ['Engine Capacity', getCcBand(data.cc)]
+        ];
+    
+    } else {
+    
+        // =================================================
+        // BUNDLED / PACKAGE / SAOD
+        // =================================================
+    
+        vehicleBody = [
+            ['Zone', data.zone],
+            ['IDV', money(data.idv)],
+            ['Engine Capacity', getCcBand(data.cc)]
+        ];
+    
+        // Vehicle Age applies to Package and SAOD
+        if (
+            data.policyType === "package" ||
+            data.policyType === "saod"
+        ) {
+    
             vehicleBody.push([
-            
-                'OD Rate',
-            
-                odRateText
-            
+                'Vehicle Age',
+                `${Number(data.vehicleAge).toFixed(1)} Years`
             ]);
-
+    
+        }
+    
+        // OD Rate applies to OD policies
+        vehicleBody.push([
+            'OD Rate',
+            odRateText
+        ]);
+    }
+    
+    
     doc.autoTable({
-
+    
         startY: vehicleStartY,
-
+    
         theme: 'grid',
-
+    
         head: [
             [
                 {
@@ -549,9 +566,9 @@ async function generateQuotePdf() {
                 }
             ]
         ],
-
+    
         body: vehicleBody,
-
+    
         styles: {
             fontSize: 9,
             fontStyle: 'bold',
@@ -559,23 +576,23 @@ async function generateQuotePdf() {
             lineWidth: 0.2,
             lineColor: [100,100,100]
         },
-
+    
         headStyles: {
-
+    
             fillColor: [0, 70, 140],
             textColor: 255,
             halign: 'center',
             fontStyle: 'bold'
         },
-
+    
         columnStyles: {
-
+    
             0: {
                 cellWidth: 148,
                 halign: 'left',
                 fontStyle: 'bold'
             },
-
+    
             1: {
                 cellWidth: 35,
                 halign: 'right'
