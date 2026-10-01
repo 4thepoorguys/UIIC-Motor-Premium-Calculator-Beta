@@ -25,6 +25,13 @@ if (data.policyType === 'liability') {
         bdIdvRow.style.display = 'none';
     }
 
+    // Hide Vehicle Age
+    const vehicleAgeRow =
+        document.getElementById('vehicleAgeRow');
+    
+    if (vehicleAgeRow) {
+        vehicleAgeRow.style.display = 'none';
+    }
 
     // Hide OD Rate
     const bdOdRateRow =
