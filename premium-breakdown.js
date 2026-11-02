@@ -118,6 +118,48 @@ if (!data) {
     throw new Error("No premiumBreakdown data found");
 }
 
+// =====================================================
+// DISCOUNT PERCENTAGE DISPLAY (LABEL ONLY)
+// =====================================================
+
+const discountPercentToggle =
+    document.getElementById('showDiscountPercentages');
+
+function getShowDiscountPercentages() {
+    try {
+        const saved = localStorage.getItem('showDiscountPercentages');
+        return saved === null ? true : saved === 'true';
+    } catch (error) {
+        return true;
+    }
+}
+
+function formatBreakdownLabel(label) {
+    if (getShowDiscountPercentages()) return String(label || '');
+    return String(label || '').replace(/\s*\(\s*\d+(?:\.\d+)?%\s*\)/g, '');
+}
+
+function updateDiscountLabels() {
+    document.querySelectorAll('[data-breakdown-label]').forEach(el => {
+        el.textContent = formatBreakdownLabel(el.dataset.originalLabel || '');
+    });
+}
+
+if (discountPercentToggle) {
+    discountPercentToggle.checked = getShowDiscountPercentages();
+    discountPercentToggle.addEventListener('change', function () {
+        localStorage.setItem('showDiscountPercentages', String(this.checked));
+        updateDiscountLabels();
+    });
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;',
+        '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
+
 
 // =====================================================
 // VEHICLE DETAILS
@@ -197,7 +239,7 @@ if (odContainer && Array.isArray(data.odItems)) {
 
             odContainer.innerHTML += `
                 <div class="breakdown-row">
-                    <span>${item.label}</span>
+                    <span data-breakdown-label data-original-label="${escapeHtml(item.label)}">${escapeHtml(formatBreakdownLabel(item.label))}</span>
                     <strong>
                         ₹${Number(item.amount).toFixed(2)}
                     </strong>
@@ -237,7 +279,7 @@ if (
 
             liabilityContainer.innerHTML += `
                 <div class="breakdown-row">
-                    <span>${item.label}</span>
+                    <span data-breakdown-label data-original-label="${escapeHtml(item.label)}">${escapeHtml(formatBreakdownLabel(item.label))}</span>
                     <strong>
                         ₹${Number(item.amount).toFixed(2)}
                     </strong>
@@ -611,11 +653,12 @@ async function generateQuotePdf() {
         if (Number(item.amount || 0) !== 0) {
 
             odRows.push([
-                item.label,
+                formatBreakdownLabel(item.label),
                 Number(item.amount).toFixed(2)
             ]);
         }
     });
+
 
     // =====================================================
     // TP ROWS
@@ -628,7 +671,7 @@ async function generateQuotePdf() {
         if (Number(item.amount || 0) !== 0) {
 
             tpRows.push([
-                item.label,
+                formatBreakdownLabel(item.label),
                 Number(item.amount).toFixed(2)
             ]);
         }
