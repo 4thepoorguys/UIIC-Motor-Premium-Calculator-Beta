@@ -1924,6 +1924,29 @@ function calculatePrivateCarPolicy() {
         + sgst
     );
 
+    // =====================================================
+    // SELECTED ADD-ON DETAILS FOR BREAKDOWN / PDF
+    // =====================================================
+
+    const formatSI = value =>
+        Number(value || 0).toLocaleString('en-IN', {
+            maximumFractionDigits: 0
+        });
+
+    const selectedEngineType =
+        $('engineType')?.value === 'platinum' ? 'Platinum' :
+        $('engineType')?.value === 'standard' ? 'Standard' : '';
+
+    const selectedLossOfKeySI = getValue('lossOfKeySI');
+    const selectedTyreRimSI = getValue('tyreRimSI');
+    const selectedCourtesyDays = getInt('courtesyDays');
+    const selectedMedicalSI = getValue('medicalSI');
+    const selectedPetCareSI = getValue('petCareSI');
+    const selectedPersonalBelongingsSI = getValue('PersonalBelongingsSI');
+    const selectedPlatSeating = getInt('platSeating');
+    const selectedPlatSI = getValue('platSi');
+    const selectedUnnamedPersons = getInt('unnamedPersons');
+    const selectedUnnamedSI = getValue('unnamedSi');
 
     // =====================================================
     // OD BREAKDOWN
@@ -1981,20 +2004,23 @@ function calculatePrivateCarPolicy() {
         },
 
         {
-            label:
-                "Engine & Gearbox Protect",
+            label: enginePremium > 0
+                ? `Engine & Gearbox Protect (${selectedEngineType})`
+                : "Engine & Gearbox Protect",
             amount: enginePremium
         },
 
         {
-            label:
-                "Loss Of Key Cover",
+            label: lossOfKeyPremium > 0
+                ? `Loss Of Key Cover (SI ₹${formatSI(selectedLossOfKeySI)})`
+                : "Loss Of Key Cover",
             amount: lossOfKeyPremium
         },
 
         {
-            label:
-                "Tyre & Rim Protector",
+            label: tyreRimPremium > 0
+                ? `Tyre & Rim Protector (SI ₹${formatSI(selectedTyreRimSI)})`
+                : "Tyre & Rim Protector",
             amount: tyreRimPremium
         },
 
@@ -2004,15 +2030,17 @@ function calculatePrivateCarPolicy() {
             amount: emiPremium
         },
 
-        {
-            label:
-                "Pet Care Cover",
+         {
+            label: petCarePremium > 0
+                ? `Pet Care Cover (SI ₹${formatSI(selectedPetCareSI)})`
+                : "Pet Care Cover",
             amount: petCarePremium
         },
 
         {
-            label:
-                "Courtesy Car Cover",
+            label: courtesyPremium > 0
+                ? `Courtesy Car Cover (${selectedCourtesyDays} Days)`
+                : "Courtesy Car Cover",
             amount: courtesyPremium
         },
 
@@ -2031,14 +2059,16 @@ function calculatePrivateCarPolicy() {
         },
 
         {
-            label:
-                "Medical Expenses Cover",
+            label: medicalPremium > 0
+                ? `Medical Expenses Cover (SI ₹${formatSI(selectedMedicalSI)})`
+                : "Medical Expenses Cover",
             amount: medicalPremium
         },
 
         {
-            label:
-                "Personal Belongings",
+            label: PersonalBelongingsPremium > 0
+                ? `Personal Belongings (SI ₹${formatSI(selectedPersonalBelongingsSI)})`
+                : "Personal Belongings",
             amount: PersonalBelongingsPremium
         },
 
@@ -2109,15 +2139,17 @@ function calculatePrivateCarPolicy() {
         },
 
         {
-            label:
-                "Platinum PA Cover",
+            label: platinumPaPremium > 0
+                ? `Platinum PA Cover (SI ₹${formatSI(selectedPlatSI)} × ${selectedPlatSeating} Persons)`
+                : "Platinum PA Cover",
             amount:
                 platinumPaPremium
         },
 
         {
-            label:
-                "Unnamed PA Cover",
+            label: unnamedPaPremium > 0
+                ? `Unnamed PA Cover (SI ₹${formatSI(selectedUnnamedSI)} × ${selectedUnnamedPersons} Persons)`
+                : "Unnamed PA Cover",
             amount:
                 unnamedPaPremium
         },
