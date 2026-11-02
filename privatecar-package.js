@@ -1746,7 +1746,7 @@ function calculatePrivateCarPolicy() {
     if (isChecked('toggleCpa')) {
 
         cpaPremium =
-             275;
+             325;
 
         liabilityPremium += cpaPremium;
     }
