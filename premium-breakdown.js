@@ -789,11 +789,11 @@ if (data.policyType === 'saod') {
         columnStyles: {
 
             0: {
-                cellWidth: 60
+                cellWidth: 65
             },
 
             1: {
-                cellWidth: 31,
+                cellWidth: 26,
                 halign: 'right'
             }
         }
@@ -859,11 +859,11 @@ if (data.policyType !== 'saod') {
         columnStyles: {
 
             0: {
-                cellWidth: 56
+                cellWidth: 61
             },
 
             1: {
-                cellWidth: 35,
+                cellWidth: 30,
                 halign: 'right'
             }
         }
