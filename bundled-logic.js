@@ -1059,8 +1059,8 @@ function calculateBundledPolicy() {
 
         cpaPremium =
             $('cpaTenure')?.value === "3"
-            ? 705
-            : 275;
+            ? 839
+            : 325;
 
         liabilityPremium += cpaPremium;
     }
