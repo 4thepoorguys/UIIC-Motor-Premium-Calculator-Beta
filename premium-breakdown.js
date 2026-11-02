@@ -717,7 +717,10 @@ if (data.policyType === 'saod') {
             fontStyle: 'bold',
             textColor: [15,15,15],
             lineWidth: 0.2,
-            lineColor: [100,100,100]
+            lineColor: [100,100,100],
+            overflow: 'linebreak',
+            valign: 'middle',
+            cellPadding: 1.5
         },
 
         headStyles: {
@@ -840,7 +843,10 @@ if (data.policyType !== 'saod') {
             fontStyle: 'bold',
             textColor: [15,15,15],
             lineWidth: 0.2,
-            lineColor: [100,100,100]
+            lineColor: [100,100,100],
+             overflow: 'linebreak',
+            valign: 'middle',
+            cellPadding: 1.5
         },
 
         headStyles: {
